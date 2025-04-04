@@ -1,0 +1,136 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+}
+
+#menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 500px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 100;
+}
+
+button {
+    background-color: #000000;
+    border: 1px solid #486197;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.panel {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 3px;
+}
+
+label {
+    display: block;
+    margin-top: 5px;
+}
+
+.tool-group {
+    margin-bottom: 10px;
+}
+
+.tool-button {
+    width: calc(33.33% - 8px);
+}
+
+.tool-button.active {
+    background-color: #2196F3;
+}
+
+.export-code {
+    width: 100%;
+    height: 200px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 5px;
+    font-family: monospace;
+    white-space: pre;
+    overflow: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.status {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+/* Estilos para tabs */
+.tab {
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px 5px 0 0;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    margin: 0;
+    width: 25%;
+    border-radius: 0;
+}
+
+.tab button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tab button.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tabcontent {
+    display: none;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 5px 5px;
+}

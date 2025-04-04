@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Sistema Articulado</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div id="menu">
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'tools')">Herramientas</button>
+            <button class="tablinks" onclick="openTab(event, 'properties')">Propiedades</button>
+            <button class="tablinks" onclick="openTab(event, 'export')">Exportar</button>
+            <button class="tablinks" onclick="openTab(event, 'import')">Importar</button>
+        </div>
+
+        <div id="tools" class="tabcontent" style="display: block;">
+            <div class="tool-group">
+                <button id="selectTool" class="tool-button active" onclick="setTool('select')">Seleccionar</button>
+                <button id="jointTool" class="tool-button" onclick="setTool('joint')">Joint</button>
+                <button id="anchorTool" class="tool-button" onclick="setTool('anchor')">Anchor</button>
+            </div>
+            <div class="tool-group">
+                <button id="distanceTool" class="tool-button" onclick="setTool('distance')">Distance</button>
+                <button id="deleteTool" class="tool-button" onclick="setTool('delete')">Eliminar</button>
+                <button id="clearAll" class="tool-button" onclick="clearSystem()">Borrar Todo</button>
+            </div>
+        </div>
+        
+        <div id="properties" class="tabcontent">
+            <div id="jointProperties" class="panel hidden">
+                <h3>Propiedades del Joint</h3>
+                <label for="jointId">ID:</label>
+                <input type="text" id="jointId">
+                <label for="jointMass">Masa:</label>
+                <input type="number" id="jointMass" min="0.1" step="0.1" value="1">
+                <label for="jointRadius">Radio:</label>
+                <input type="number" id="jointRadius" min="1" step="1" value="5">
+                <label for="jointColor">Color:</label>
+                <input type="color" id="jointColor" value="#ffffff">
+                <label for="jointFixed">Fijo:</label>
+                <input type="checkbox" id="jointFixed">
+                <button onclick="applyJointProperties()">Aplicar</button>
+            </div>
+            
+            <div id="distanceProperties" class="panel hidden">
+                <h3>Propiedades de Distance</h3>
+                <label for="distanceId">ID:</label>
+                <input type="text" id="distanceId">
+                <label for="distanceLength">Longitud:</label>
+                <input type="number" id="distanceLength" min="1" step="1" value="100">
+                <label for="distanceStiffness">Rigidez:</label>
+                <input type="number" id="distanceStiffness" min="0.1" step="0.1" value="50">
+                <label for="distanceDamping">Amortiguación:</label>
+                <input type="number" id="distanceDamping" min="0.1" step="0.1" value="3">
+                <label for="distanceColor">Color:</label>
+                <input type="color" id="distanceColor" value="#ffffff">
+                <label for="distanceDrawAsSpring">Dibujar como resorte:</label>
+                <input type="checkbox" id="distanceDrawAsSpring" checked>
+                <button onclick="applyDistanceProperties()">Aplicar</button>
+            </div>
+            
+            <div id="noSelection" class="panel">
+                <p>Selecciona un elemento para ver sus propiedades.</p>
+            </div>
+        </div>
+        
+        <div id="export" class="tabcontent">
+            <button onclick="generateCode()">Generar Código</button>
+            <textarea class="export-code" id="exportCode" readonly></textarea>
+            <button onclick="copyToClipboard()">Copiar al Portapapeles</button>
+        </div>
+
+        <div id="import" class="tabcontent">
+            <p>Pega el código generado previamente para importar el sistema:</p>
+            <textarea class="export-code" id="importCode"></textarea>
+            <button onclick="importCode()">Importar Sistema</button>
+        </div>
+    </div>
+    
+    <div id="status" class="status">Herramienta: Seleccionar</div>
+
+    <!-- Carga de módulos JavaScript -->
+    <script src="js/config.js"></script>
+    <script src="js/models/joint.js"></script>
+    <script src="js/models/rules.js"></script>
+    <script src="js/models/physicsSystem.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/ui/editor.js"></script>
+    <script src="js/ui/tabs.js"></script>
+    <script src="js/ui/properties.js"></script>
+    <script src="js/ui/codeHandling.js"></script>
+    <script src="js/models/biped.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
